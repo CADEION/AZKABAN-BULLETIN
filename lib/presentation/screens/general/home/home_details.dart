@@ -2,13 +2,16 @@ part of 'home_imports.dart';
 
 @RoutePage()
 class HomeDetails extends StatelessWidget {
-  const HomeDetails({super.key});
+  const HomeDetails({ required this.post, required this.imagePathUrl});
+  final Post post;
+  final String imagePathUrl;
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: 'Netflix will charge for sharing the password'
+        title: post.title!
             .text
             .white
             .size(20.sp)
@@ -18,13 +21,13 @@ class HomeDetails extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Image.asset(MyAssets.assetsImagesNetflix),
+          CachedNetworkImage(imageUrl: imagePathUrl,fit: BoxFit.cover,height: 300,),
           6.h.heightBox,
           Padding(
             padding: const EdgeInsets.all(14.0),
             child: Column(
               children: [
-                "Netflix will charge for sharing the password"
+              post.title!
                     .text
                     .size(20)
                     .bold
@@ -34,7 +37,7 @@ class HomeDetails extends StatelessWidget {
                   children: [
                     Icon(FeatherIcons.eye),
                     6.w.widthBox,
-                    '147 Views'.text.make(),
+                    post.views!.text.make(),
                     Spacer(),
                     Icon(
                       FeatherIcons.thumbsUp,
@@ -51,11 +54,7 @@ class HomeDetails extends StatelessWidget {
                     '0'.text.make(),
                   ],
                 ),20.h.heightBox,
-                'MMR, also known as Matchmaking Rating is a crucial way to determine your skill in competitive games. The MMR you gain by winning matches decides your opponents for further lobbies. Just like other competitive games, Valve’s Deadlock also runs on the MMR system to make certain lobbies full of equal-level players. Want to know where you stand? Learn how to find your Deadlock MMR right here.'
-                    .text
-                    .size(18)
-                    .fontWeight(FontWeight.w100)
-                    .make()
+                HtmlWidget(post.body!)
               ],
             ),
           ),

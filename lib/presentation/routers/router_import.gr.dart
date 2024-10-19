@@ -23,6 +23,8 @@ import 'package:azkaban_bulletin/presentation/screens/general/general_imports.da
     as _i4;
 import 'package:azkaban_bulletin/presentation/screens/general/home/home_imports.dart'
     as _i5;
+import 'package:azkaban_bulletin/presentation/screens/general/home/home_model.dart'
+    as _i13;
 import 'package:azkaban_bulletin/presentation/screens/general/profile/profile_imports.dart'
     as _i8;
 import 'package:azkaban_bulletin/presentation/screens/general/tags/tags_imports.dart'
@@ -129,10 +131,17 @@ class HomeRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.HomeDetails]
-class HomeDetailsRoute extends _i12.PageRouteInfo<void> {
-  const HomeDetailsRoute({List<_i12.PageRouteInfo>? children})
-      : super(
+class HomeDetailsRoute extends _i12.PageRouteInfo<HomeDetailsRouteArgs> {
+  HomeDetailsRoute({
+    required _i13.Post post,
+    required String imagePathUrl,
+    List<_i12.PageRouteInfo>? children,
+  }) : super(
           HomeDetailsRoute.name,
+          args: HomeDetailsRouteArgs(
+            post: post,
+            imagePathUrl: imagePathUrl,
+          ),
           initialChildren: children,
         );
 
@@ -141,9 +150,29 @@ class HomeDetailsRoute extends _i12.PageRouteInfo<void> {
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i5.HomeDetails();
+      final args = data.argsAs<HomeDetailsRouteArgs>();
+      return _i5.HomeDetails(
+        post: args.post,
+        imagePathUrl: args.imagePathUrl,
+      );
     },
   );
+}
+
+class HomeDetailsRouteArgs {
+  const HomeDetailsRouteArgs({
+    required this.post,
+    required this.imagePathUrl,
+  });
+
+  final _i13.Post post;
+
+  final String imagePathUrl;
+
+  @override
+  String toString() {
+    return 'HomeDetailsRouteArgs{post: $post, imagePathUrl: $imagePathUrl}';
+  }
 }
 
 /// generated route for

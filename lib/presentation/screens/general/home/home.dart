@@ -31,83 +31,109 @@ class _HomeState extends State<Home> {
               );
             } else if (state is VelocityUpdateState) {
               return SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 24.h),
                 child: Column(
                   children: [
-                    Image.asset(MyAssets.assetsImagesNetflix).cornerRadius(12),
+                    10.h.heightBox,
+                    VxSwiper.builder(
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      itemCount: state.data.popularPosts!.length,
+                      itemBuilder: ((context, index) {
+                        var latestPosts = state.data.popularPosts![index];
+                        var imagePath = latestPosts.featuredimage.toString();
+                        return CachedNetworkImage(
+                          imageUrl: imagePath,
+                          fit: BoxFit.cover,
+                        ).cornerRadius(20).pSymmetric(h: 10);
+                      }),
+                    ),
                     20.h.heightBox,
 
                     // Latest Posts Section
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        "Latest Posts".text.size(16).make(),
-                        "See All".text.size(16).make(),
-                      ],
-                    ).pSymmetric(h: 24.w),
+                    Padding(
+                      padding:  EdgeInsets.symmetric(horizontal: 24.h),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          "Latest Posts".text.size(16).make(),
+                          "See All".text.size(16).make(),
+                        ],
+                      ).pSymmetric(h: 24.w),
+                    ),
                     14.h.heightBox,
 
                     // Posts List
-                    ListView.separated(
-                      shrinkWrap: true,
-                      itemCount: 5,
-                      physics: const NeverScrollableScrollPhysics(),
-                      separatorBuilder: (context, index) =>
-                          SizedBox(height: 20.h),
-                      itemBuilder: (context, index) {
-                        return Row(
-                          children: [
-                            // Image
-                            GestureDetector(
-                              onTap: () {
-                                AutoRouter.of(context).push(HomeDetailsRoute());
-                              },
-                              child: Image.asset(
-                                MyAssets.assetsImagesNetflix,
-                                fit: BoxFit.cover,
-                              ).cornerRadius(20).h(140.h).w(180.w),
-                            ),
-                            10.w.widthBox,
-                            // Text and Meta Info
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // Post Title
-                                  "Netflix will charge for sharing the password"
-                                      .text
-                                      .size(16)
-                                      .bold
-                                      .maxLines(3)
-                                      .overflow(TextOverflow.ellipsis)
-                                      .make(),
-                                  6.h.heightBox,
-
-                                  // Post Meta (Time)
-                                  Row(
-                                    children: [
-                                      const Icon(FeatherIcons.clock),
-                                      8.horizontalSpace,
-                                      'latestPosts'.text.size(14).make(),
-                                    ],
-                                  ),
-                                  6.h.heightBox,
-
-                                  // Post Meta (Views and Bookmark)
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      "69 Views".text.size(16).make(),
-                                      const Icon(FeatherIcons.bookmark),
-                                    ],
-                                  ),
-                                ],
+                    FadedScaleAnimation(
+                      child: ListView.separated(
+                        padding: EdgeInsets.symmetric(horizontal: 24.h),
+                        shrinkWrap: true,
+                        itemCount: state.data.allPosts!.length,
+                        physics: const NeverScrollableScrollPhysics(),
+                        separatorBuilder: (context, index) =>
+                            SizedBox(height: 20.h),
+                        itemBuilder: (context, index) {
+                          var latestPosts = state.data.allPosts![index];
+                          var imagePath = latestPosts.featuredimage.toString();
+                          return Row(
+                            children: [
+                              // Image
+                              GestureDetector(
+                                onTap: () {
+                                  AutoRouter.of(context).push(HomeDetailsRoute(post: latestPosts, imagePathUrl: imagePath));
+                                },
+                                child: CachedNetworkImage(
+                                  imageUrl: imagePath,
+                                  height: 120,
+                                  width: 180,
+                                  fit: BoxFit.cover,
+                                )
+                                    .cornerRadius(20)
+                                    .cornerRadius(20)
+                                    .h(140.h)
+                                    .w(180.w),
                               ),
-                            ),
-                          ],
-                        );
-                      },
+                              10.w.widthBox,
+                              // Text and Meta Info
+                              Flexible(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Post Title
+                                      '${latestPosts.title!}'
+                                        .text
+                                        .size(16)
+                                        .bold
+                                        .maxLines(3)
+                                        .overflow(TextOverflow.ellipsis)
+                                        .make(),
+                                    6.h.heightBox,
+                      
+                                    // Post Meta (Time)
+                                    Row(
+                                      children: [
+                                        const Icon(FeatherIcons.clock),
+                                        8.horizontalSpace,
+                                        'latestPosts'.text.size(14).make(),
+                                      ],
+                                    ),
+                                    6.h.heightBox,
+                      
+                                    // Post Meta (Views and Bookmark)
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        "69 Views".text.size(16).make(),
+                                        const Icon(FeatherIcons.bookmark),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),
