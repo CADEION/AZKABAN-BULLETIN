@@ -1,4 +1,3 @@
-import 'package:azkaban_bulletin/data/repositories/repositories.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../presentation/screens/auth/login/login_model.dart';
