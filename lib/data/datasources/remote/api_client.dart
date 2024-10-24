@@ -32,12 +32,12 @@ class ApiClient {
   }
 
 
-  Future<Response> postRequest({required String path}) async{
+  Future<Response> postRequest({required String path,required dynamic body}) async{
     
-    Map<String,dynamic> body = {
-    "title" : "TarData1",
-    "slug" : "TarData1"
-};
+//     Map<String,dynamic> body = {
+//     "title" : "TarData1",
+//     "slug" : "TarData1"
+// };
 
   final options = Options(
     headers: {

@@ -9,6 +9,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  late LoginViewModel loginViewModel;
+
+  @override
+  void initState() {
+    loginViewModel = LoginViewModel(repositories: context.read<Repositories>());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +62,16 @@ class _LoginState extends State<Login> {
                         borderType: VxTextFieldBorderType.roundLine,
                         borderRadius: 10,
                         prefixIcon: const Icon(Icons.email),
+                        keyboardType: TextInputType.emailAddress,
+                        controller: loginViewModel.emailController,
+                        // validator: (email) {
+                        //   if (email!.isEmpty) {
+                        //     return 'Empty Email';
+                        //   } else if (!email.isValidEmail) {
+                        //     return 'Invalid Email';
+                        //   }
+                        //   return null;
+                        // },
                       ),
                       20.h.heightBox,
                       "Password".text.make(),
@@ -66,6 +84,13 @@ class _LoginState extends State<Login> {
                         borderType: VxTextFieldBorderType.roundLine,
                         borderRadius: 10,
                         prefixIcon: const Icon(Icons.lock),
+                        controller: loginViewModel.passwordController,
+                        // validator: (password) {
+                        //   if (password!.isEmpty) {
+                        //     return 'Empty password';
+                        //   }
+                        //   return null;
+                        // },
                       ),
                       40.h.heightBox,
                       Row(
@@ -85,9 +110,11 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                       40.h.heightBox,
-                      PrimaryButton(title: "Login", onPressed: () {
-                        AutoRouter.of(context).push(GeneralRoute());
-                      }),
+                      PrimaryButton(
+                          title: "Login",
+                          onPressed: () {
+                            loginViewModel.login(context);
+                          }),
                       20.h.heightBox,
                       "Don’t have an account ?"
                           .richText
@@ -97,7 +124,9 @@ class _LoginState extends State<Login> {
                           .withTextSpanChildren([
                         TextSpan(
                             text: " Sign Up",
-                            recognizer: TapGestureRecognizer()..onTap = () => AutoRouter.of(context).push(RegisterRoute()),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () =>
+                                  AutoRouter.of(context).push(RegisterRoute()),
                             style:
                                 const TextStyle(fontWeight: FontWeight.w700)),
                       ]).makeCentered(),
