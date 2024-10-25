@@ -35,8 +35,9 @@ class Onboard extends StatelessWidget {
                 onPressed: () {
                   AutoRouter.of(context).push(AuthRoute());
                 },
-                // onPressed: () {
-                //   TagsRepo().getTags();
+                // onPressed: ()async {
+                //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+                //   Vx.log(prefs.getString('accessToken'));
                 // },
               ),
               61.h.heightBox,
