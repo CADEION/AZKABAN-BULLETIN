@@ -113,7 +113,7 @@ class _ProfileState extends State<Profile> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    'Netflix ix charging money for Password sharing'.text.medium
+                                    'Netflix is charging money for Password sharing'.text.medium
                                         .maxLines(2)
                                         .make()
                                         .expand(),
