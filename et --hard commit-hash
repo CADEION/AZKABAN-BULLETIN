@@ -1,0 +1,29 @@
+[33mcommit 5a154940433a2b398af8b77e893ba04d8af3c0b3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: cadeion <shatshat000@gmail.com>
+Date:   Fri Oct 25 09:56:54 2024 +0530
+
+    Add Auth Presistance
+
+[33mcommit 1e73ee101e78bf963087e1b2f4d92c149be12244[m
+Author: cadeion <shatshat000@gmail.com>
+Date:   Thu Oct 24 20:21:41 2024 +0530
+
+    Add Form
+
+[33mcommit f1dbedc4c802f4975e2c54925e61189ea1e8352e[m
+Author: cadeion <shatshat000@gmail.com>
+Date:   Thu Oct 24 20:17:23 2024 +0530
+
+    Implement Login Functionality
+
+[33mcommit bc2e6cc1abf81ca3892a59ba9cc980a579bcd1ec[m
+Author: cadeion <shatshat000@gmail.com>
+Date:   Sat Oct 19 07:53:01 2024 +0530
+
+    Update Home Page
+
+[33mcommit 6e64c807e9af4caee99ed13fc7e905915302b668[m
+Author: cadeion <shatshat000@gmail.com>
+Date:   Fri Oct 18 15:08:42 2024 +0530
+
+    First Commit
