@@ -60,7 +60,9 @@ class _TagsState extends State<Tags> {
                                   color: Colors.teal,
                                 )),
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  tagsViewModel.deleteTags(context, tagData.id.toString(), index);
+                                },
                                 icon: const Icon(FeatherIcons.trash2,
                                     color: Colors.red)),
                           ],

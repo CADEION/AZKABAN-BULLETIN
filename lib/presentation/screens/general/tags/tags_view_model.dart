@@ -18,6 +18,17 @@ class TagsViewModel {
   goToAddTags(context) async {
     var addedData =
         await AutoRouter.of(context).push<TagsModel>(AddTagsRoute());
-    tagsModelBloc.onUpdateData(addedData!);
+    if (addedData != null) {
+      tagsModelBloc.onUpdateData(addedData);
+    }
+  }
+
+  deleteTags(context, String id, int index) async {
+    var data = await repositories.tagsRepo.deleteTags(id);
+    if (data.status == 1) {
+      VxToast.show(context, msg: data.message!);
+      tagsModelBloc.state.data.tags!.removeAt(index);
+      tagsModelBloc.onUpdateData(tagsModelBloc.state.data);
+    }
   }
 }
