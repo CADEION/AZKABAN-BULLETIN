@@ -9,12 +9,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i18n_extension/i18n_extension.dart';
+import 'package:intl/intl.dart';
 import 'package:velocity_bloc/cubit/velocity_cubit/velocity_cubit.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../data/repositories/repositories.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-
+import 'package:timeago/timeago.dart' as timeago;
 
 part 'home.dart';
 part 'home.i18n.dart';

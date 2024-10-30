@@ -10,27 +10,27 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i12;
 import 'package:azkaban_bulletin/presentation/screens/auth/auth_imports.dart'
-    as _i2;
+    as _i3;
 import 'package:azkaban_bulletin/presentation/screens/auth/login/login_imports.dart'
-    as _i6;
+    as _i7;
 import 'package:azkaban_bulletin/presentation/screens/auth/register/register_imports.dart'
     as _i9;
 import 'package:azkaban_bulletin/presentation/screens/general/add_posts/add_posts_imports.dart'
     as _i1;
 import 'package:azkaban_bulletin/presentation/screens/general/categories/categories_imports.dart'
-    as _i3;
-import 'package:azkaban_bulletin/presentation/screens/general/general_imports.dart'
     as _i4;
-import 'package:azkaban_bulletin/presentation/screens/general/home/home_imports.dart'
+import 'package:azkaban_bulletin/presentation/screens/general/general_imports.dart'
     as _i5;
+import 'package:azkaban_bulletin/presentation/screens/general/home/home_imports.dart'
+    as _i6;
 import 'package:azkaban_bulletin/presentation/screens/general/home/home_model.dart'
     as _i13;
-import 'package:azkaban_bulletin/presentation/screens/general/profile/profile_imports.dart'
-    as _i8;
+import 'package:azkaban_bulletin/presentation/screens/general/tags/add_tags/add_tags_imports.dart'
+    as _i2;
 import 'package:azkaban_bulletin/presentation/screens/general/tags/tags_imports.dart'
     as _i11;
 import 'package:azkaban_bulletin/presentation/screens/Onboard/onboard_import.dart'
-    as _i7;
+    as _i8;
 import 'package:azkaban_bulletin/presentation/screens/splash/splash_import.dart'
     as _i10;
 
@@ -54,7 +54,26 @@ class AddPostsRoute extends _i12.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.Auth]
+/// [_i2.AddTags]
+class AddTagsRoute extends _i12.PageRouteInfo<void> {
+  const AddTagsRoute({List<_i12.PageRouteInfo>? children})
+      : super(
+          AddTagsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddTagsRoute';
+
+  static _i12.PageInfo page = _i12.PageInfo(
+    name,
+    builder: (data) {
+      return const _i2.AddTags();
+    },
+  );
+}
+
+/// generated route for
+/// [_i3.Auth]
 class AuthRoute extends _i12.PageRouteInfo<void> {
   const AuthRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -67,13 +86,13 @@ class AuthRoute extends _i12.PageRouteInfo<void> {
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i2.Auth();
+      return const _i3.Auth();
     },
   );
 }
 
 /// generated route for
-/// [_i3.Categories]
+/// [_i4.Categories]
 class CategoriesRoute extends _i12.PageRouteInfo<void> {
   const CategoriesRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -86,13 +105,13 @@ class CategoriesRoute extends _i12.PageRouteInfo<void> {
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i3.Categories();
+      return const _i4.Categories();
     },
   );
 }
 
 /// generated route for
-/// [_i4.General]
+/// [_i5.General]
 class GeneralRoute extends _i12.PageRouteInfo<void> {
   const GeneralRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -105,13 +124,13 @@ class GeneralRoute extends _i12.PageRouteInfo<void> {
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i4.General();
+      return const _i5.General();
     },
   );
 }
 
 /// generated route for
-/// [_i5.Home]
+/// [_i6.Home]
 class HomeRoute extends _i12.PageRouteInfo<void> {
   const HomeRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -124,13 +143,13 @@ class HomeRoute extends _i12.PageRouteInfo<void> {
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i5.Home();
+      return const _i6.Home();
     },
   );
 }
 
 /// generated route for
-/// [_i5.HomeDetails]
+/// [_i6.HomeDetails]
 class HomeDetailsRoute extends _i12.PageRouteInfo<HomeDetailsRouteArgs> {
   HomeDetailsRoute({
     required _i13.Post post,
@@ -151,7 +170,7 @@ class HomeDetailsRoute extends _i12.PageRouteInfo<HomeDetailsRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<HomeDetailsRouteArgs>();
-      return _i5.HomeDetails(
+      return _i6.HomeDetails(
         post: args.post,
         imagePathUrl: args.imagePathUrl,
       );
@@ -176,7 +195,7 @@ class HomeDetailsRouteArgs {
 }
 
 /// generated route for
-/// [_i6.Login]
+/// [_i7.Login]
 class LoginRoute extends _i12.PageRouteInfo<void> {
   const LoginRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -189,13 +208,13 @@ class LoginRoute extends _i12.PageRouteInfo<void> {
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i6.Login();
+      return const _i7.Login();
     },
   );
 }
 
 /// generated route for
-/// [_i7.Onboard]
+/// [_i8.Onboard]
 class OnboardRoute extends _i12.PageRouteInfo<void> {
   const OnboardRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -208,26 +227,7 @@ class OnboardRoute extends _i12.PageRouteInfo<void> {
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i7.Onboard();
-    },
-  );
-}
-
-/// generated route for
-/// [_i8.Profile]
-class ProfileRoute extends _i12.PageRouteInfo<void> {
-  const ProfileRoute({List<_i12.PageRouteInfo>? children})
-      : super(
-          ProfileRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ProfileRoute';
-
-  static _i12.PageInfo page = _i12.PageInfo(
-    name,
-    builder: (data) {
-      return const _i8.Profile();
+      return const _i8.Onboard();
     },
   );
 }

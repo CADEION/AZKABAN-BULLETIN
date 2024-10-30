@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
 
                     // Latest Posts Section
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 24.h),
+                      padding: EdgeInsets.symmetric(horizontal: 24.h),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -74,12 +74,15 @@ class _HomeState extends State<Home> {
                         itemBuilder: (context, index) {
                           var latestPosts = state.data.allPosts![index];
                           var imagePath = latestPosts.featuredimage.toString();
+                          // String timeAgo = convertToAgo(latestPosts.createdAt);
                           return Row(
                             children: [
                               // Image
                               GestureDetector(
                                 onTap: () {
-                                  AutoRouter.of(context).push(HomeDetailsRoute(post: latestPosts, imagePathUrl: imagePath));
+                                  AutoRouter.of(context).push(HomeDetailsRoute(
+                                      post: latestPosts,
+                                      imagePathUrl: imagePath));
                                 },
                                 child: CachedNetworkImage(
                                   imageUrl: imagePath,
@@ -99,7 +102,7 @@ class _HomeState extends State<Home> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     // Post Title
-                                      '${latestPosts.title!}'
+                                    '${latestPosts.title!}'
                                         .text
                                         .size(16)
                                         .bold
@@ -107,23 +110,30 @@ class _HomeState extends State<Home> {
                                         .overflow(TextOverflow.ellipsis)
                                         .make(),
                                     6.h.heightBox,
-                      
+
                                     // Post Meta (Time)
                                     Row(
                                       children: [
                                         const Icon(FeatherIcons.clock),
                                         8.horizontalSpace,
-                                        'latestPosts'.text.size(14).make(),
+                                        'timeAgo'
+                                            .text
+                                            .size(14)
+                                            .make(),
                                       ],
                                     ),
                                     6.h.heightBox,
-                      
+
                                     // Post Meta (Views and Bookmark)
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        "69 Views".text.size(16).make(),
+                                        latestPosts.views
+                                            .toString()
+                                            .text
+                                            .size(16)
+                                            .make(),
                                         const Icon(FeatherIcons.bookmark),
                                       ],
                                     ),
@@ -148,4 +158,5 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+
 }
