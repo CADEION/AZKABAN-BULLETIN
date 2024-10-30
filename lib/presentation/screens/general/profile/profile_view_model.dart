@@ -12,6 +12,7 @@ class ProfileViewModel {
       profileModelBloc.onUpdateData(userProfileData);
     }
   }
+  
 
   logout(context) async {
     var data = await repositories.authRepo.userLogout(context);
