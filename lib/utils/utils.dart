@@ -3,14 +3,12 @@ import 'package:azkaban_bulletin/presentation/routers/router_import.gr.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Utils {
-
-  static Future<void> manipulate(context)async{
-    var accessToken = getAccessToken();
-    if (accessToken != null) {
+  static Future<void> manipulateLogin(context) async {
+    var token = await getAccessToken();
+    if (token != null) {
       AutoRouter.of(context).push(const GeneralRoute());
-    }
-    else{
-      AutoRouter.of(context).push(const AuthRoute());
+    } else {
+      AutoRouter.of(context).push(const OnboardRoute());
     }
   }
 
@@ -19,9 +17,13 @@ class Utils {
     await prefs.setString('accessToken', accessToken);
   }
 
-  static Future<String?> getAccessToken()async{
+  static Future<String?> getAccessToken() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return  prefs.getString('accessToken');
+    return prefs.getString('accessToken');
   }
 
+  static Future<void> clearAllSavedData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+  }
 }
