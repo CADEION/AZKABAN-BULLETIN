@@ -17,5 +17,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: HomeDetailsRoute.page),
     AutoRoute(page: AddTagsRoute.page),
     AutoRoute(page: UpdateTagsRoute.page),
+    AutoRoute(page: CategoriesRoute.page),
   ];
 }

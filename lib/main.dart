@@ -1,4 +1,5 @@
 import 'package:azkaban_bulletin/data/repositories/auth_repo.dart';
+import 'package:azkaban_bulletin/data/repositories/categories_repo.dart';
 import 'package:azkaban_bulletin/data/repositories/posts_repo.dart';
 import 'package:azkaban_bulletin/data/repositories/repositories.dart';
 import 'package:azkaban_bulletin/data/repositories/tags_repo.dart';
@@ -11,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(RepositoryProvider(
-    create: (context) => Repositories(tagsRepo: TagsRepo(), postsRepo: PostsRepo(), authRepo: AuthRepo()),
+    create: (context) => Repositories(tagsRepo: TagsRepo(), postsRepo: PostsRepo(), authRepo: AuthRepo(), categoriesRepo: CategoriesRepo(),),
     child: MyApp(),
   ));
 }

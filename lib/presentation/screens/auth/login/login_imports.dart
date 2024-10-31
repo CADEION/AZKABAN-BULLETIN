@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:animation_wrappers/animations/faded_scale_animation.dart';
 import 'package:auto_route/auto_route.dart';

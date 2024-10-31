@@ -9,6 +9,16 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
+  late CategoriesViewModel categoriesViewModel;
+
+  @override
+  void initState() {
+    categoriesViewModel =
+        CategoriesViewModel(repositories: context.read<Repositories>());
+    categoriesViewModel.getAllCategories();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,37 +27,55 @@ class _CategoriesState extends State<Categories> {
         title: 'Categories'.text.size(24.sp).white.make().centered(),
         backgroundColor: MyColors.primaryColor,
       ),
-      body: ListView.separated(
-        itemCount: 6,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              leading: '${index + 1}'.text.size(16.sp).make(),
-              title: 'Enter'.text.size(16.sp).make(),
-              trailing: SizedBox(
-                width: 100.w,
-                child: Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          FeatherIcons.edit,
-                          color: Colors.teal,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon:
-                            const Icon(FeatherIcons.trash2, color: Colors.red)),
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(
-            height: 1,
-          );
+      body: BlocBuilder<VelocityBloc<CategoriesModel>,
+          VelocityState<CategoriesModel>>(
+        bloc: categoriesViewModel.categoriesModelBloc,
+        builder: (context, state) {
+          if (state is VelocityInitialState) {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          } else if (state is VelocityUpdateState) {
+            return ListView.separated(
+              itemCount: state.data.categoriesCount!,
+              itemBuilder: (context, index) {
+                var categoriesData = state.data.categories![index];
+                return Card(
+                  child: ListTile(
+                    leading: '${index + 1}'.text.size(16.sp).make(),
+                    title: categoriesData.title!.text.size(16.sp).make(),
+                    trailing: SizedBox(
+                      width: 100.w,
+                      child: Row(
+                        children: [
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                FeatherIcons.edit,
+                                color: Colors.teal,
+                              )),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(FeatherIcons.trash2,
+                                  color: Colors.red)),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(
+                  height: 1,
+                );
+              },
+            );
+          }
+          if (state is VelocityFailedState) {
+            return Center(child: state.error.text.make());
+          } else {
+            return Center(child: 'Cat data'.text.make());
+          }
         },
       ),
     );
