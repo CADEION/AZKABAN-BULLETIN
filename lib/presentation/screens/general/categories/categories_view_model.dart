@@ -31,4 +31,13 @@ class CategoriesViewModel {
       categoriesModelBloc.onUpdateData(addedData);
     }
   }
+
+  deleteCategories(context,String id,int index)async{
+    var data = await repositories.categoriesRepo.deleteCategories(id);
+    if (data.status == 1) {
+      VxToast.show(context, msg: data.message!);
+      categoriesModelBloc.state.data.categories!.removeAt(index);
+      categoriesModelBloc.onUpdateData(categoriesModelBloc.state.data);
+    }
+  }
 }

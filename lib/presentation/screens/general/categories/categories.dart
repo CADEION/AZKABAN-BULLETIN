@@ -47,7 +47,7 @@ class _CategoriesState extends State<Categories> {
             );
           } else if (state is VelocityUpdateState) {
             return ListView.separated(
-              itemCount: state.data.categoriesCount!,
+              itemCount: state.data.categories!.length,
               itemBuilder: (context, index) {
                 var categoriesData = state.data.categories![index];
                 return Card(
@@ -67,7 +67,9 @@ class _CategoriesState extends State<Categories> {
                                 color: Colors.teal,
                               )),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                categoriesViewModel.deleteCategories(context, categoriesData.id.toString(), index);
+                              },
                               icon: const Icon(FeatherIcons.trash2,
                                   color: Colors.red)),
                         ],

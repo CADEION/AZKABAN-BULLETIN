@@ -59,4 +59,22 @@ class CategoriesRepo extends ApiClient {
     }
     return MessageModel();
   }
+
+  Future<MessageModel> deleteCategories(String id) async {
+    
+    try {
+      var response =
+          await ApiClient().postRequest(path: '${ApiEndpoint.deleteCategories}/$id',isTokenRequired: true);
+      if (response.statusCode == 200) {
+        final responseData = MessageModel.fromJson(response.data);
+        return responseData;
+      } else {
+        MessageModel();
+      }
+    } on Exception catch (e) {
+      Vx.log(e);
+      MessageModel();
+    }
+    return MessageModel();
+  }
 }
