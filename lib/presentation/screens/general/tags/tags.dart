@@ -80,7 +80,7 @@ class _TagsState extends State<Tags> {
                 },
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(
-                    height: 5,
+                    height: 0.5,
                   );
                 },
               );

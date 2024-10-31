@@ -19,23 +19,37 @@ class _CategoriesState extends State<Categories> {
       ),
       body: ListView.separated(
         itemCount: 6,
-        itemBuilder: (context,index){
+        itemBuilder: (context, index) {
           return Card(
             child: ListTile(
-              leading: '${index+1}'.text.size(16.sp).make(),
+              leading: '${index + 1}'.text.size(16.sp).make(),
               title: 'Enter'.text.size(16.sp).make(),
               trailing: SizedBox(
                 width: 100.w,
                 child: Row(
                   children: [
-                    IconButton(onPressed: (){}, icon: const Icon(FeatherIcons.edit,color: Colors.teal,)),
-                    IconButton(onPressed: (){}, icon: const Icon(FeatherIcons.trash2,color: Colors.red)),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          FeatherIcons.edit,
+                          color: Colors.teal,
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        icon:
+                            const Icon(FeatherIcons.trash2, color: Colors.red)),
                   ],
                 ),
               ),
             ),
           );
-        }, separatorBuilder: (BuildContext context, int index) { return const SizedBox(height: 20,); },),
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return const SizedBox(
+            height: 1,
+          );
+        },
+      ),
     );
   }
 }
