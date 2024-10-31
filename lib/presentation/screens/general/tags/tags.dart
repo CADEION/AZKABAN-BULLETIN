@@ -30,7 +30,10 @@ class _TagsState extends State<Tags> {
               onPressed: () {
                 tagsViewModel.goToAddTags(context);
               },
-              icon: Icon(FeatherIcons.plus,color: Colors.white,))
+              icon: Icon(
+                FeatherIcons.plus,
+                color: Colors.white,
+              ))
         ],
       ),
       body: BlocBuilder<VelocityBloc<TagsModel>, VelocityState<TagsModel>>(
@@ -54,14 +57,18 @@ class _TagsState extends State<Tags> {
                         child: Row(
                           children: [
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  tagsViewModel.goToUpdateTags(
+                                      context, tagData);
+                                },
                                 icon: const Icon(
                                   FeatherIcons.edit,
                                   color: Colors.teal,
                                 )),
                             IconButton(
                                 onPressed: () {
-                                  tagsViewModel.deleteTags(context, tagData.id.toString(), index);
+                                  tagsViewModel.deleteTags(
+                                      context, tagData.id.toString(), index);
                                 },
                                 icon: const Icon(FeatherIcons.trash2,
                                     color: Colors.red)),

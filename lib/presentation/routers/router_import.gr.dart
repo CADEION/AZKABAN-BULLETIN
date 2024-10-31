@@ -8,7 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i12;
+import 'package:auto_route/auto_route.dart' as _i13;
 import 'package:azkaban_bulletin/presentation/screens/auth/auth_imports.dart'
     as _i3;
 import 'package:azkaban_bulletin/presentation/screens/auth/login/login_imports.dart'
@@ -24,20 +24,25 @@ import 'package:azkaban_bulletin/presentation/screens/general/general_imports.da
 import 'package:azkaban_bulletin/presentation/screens/general/home/home_imports.dart'
     as _i6;
 import 'package:azkaban_bulletin/presentation/screens/general/home/home_model.dart'
-    as _i13;
+    as _i14;
 import 'package:azkaban_bulletin/presentation/screens/general/tags/add_tags/add_tags_imports.dart'
     as _i2;
 import 'package:azkaban_bulletin/presentation/screens/general/tags/tags_imports.dart'
     as _i11;
+import 'package:azkaban_bulletin/presentation/screens/general/tags/tags_model.dart'
+    as _i16;
+import 'package:azkaban_bulletin/presentation/screens/general/tags/update_tags/update_tags_imports.dart'
+    as _i12;
 import 'package:azkaban_bulletin/presentation/screens/Onboard/onboard_import.dart'
     as _i8;
 import 'package:azkaban_bulletin/presentation/screens/splash/splash_import.dart'
     as _i10;
+import 'package:flutter/material.dart' as _i15;
 
 /// generated route for
 /// [_i1.AddPosts]
-class AddPostsRoute extends _i12.PageRouteInfo<void> {
-  const AddPostsRoute({List<_i12.PageRouteInfo>? children})
+class AddPostsRoute extends _i13.PageRouteInfo<void> {
+  const AddPostsRoute({List<_i13.PageRouteInfo>? children})
       : super(
           AddPostsRoute.name,
           initialChildren: children,
@@ -45,7 +50,7 @@ class AddPostsRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'AddPostsRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i1.AddPosts();
@@ -55,8 +60,8 @@ class AddPostsRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AddTags]
-class AddTagsRoute extends _i12.PageRouteInfo<void> {
-  const AddTagsRoute({List<_i12.PageRouteInfo>? children})
+class AddTagsRoute extends _i13.PageRouteInfo<void> {
+  const AddTagsRoute({List<_i13.PageRouteInfo>? children})
       : super(
           AddTagsRoute.name,
           initialChildren: children,
@@ -64,7 +69,7 @@ class AddTagsRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'AddTagsRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i2.AddTags();
@@ -74,8 +79,8 @@ class AddTagsRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.Auth]
-class AuthRoute extends _i12.PageRouteInfo<void> {
-  const AuthRoute({List<_i12.PageRouteInfo>? children})
+class AuthRoute extends _i13.PageRouteInfo<void> {
+  const AuthRoute({List<_i13.PageRouteInfo>? children})
       : super(
           AuthRoute.name,
           initialChildren: children,
@@ -83,7 +88,7 @@ class AuthRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'AuthRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i3.Auth();
@@ -93,8 +98,8 @@ class AuthRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.Categories]
-class CategoriesRoute extends _i12.PageRouteInfo<void> {
-  const CategoriesRoute({List<_i12.PageRouteInfo>? children})
+class CategoriesRoute extends _i13.PageRouteInfo<void> {
+  const CategoriesRoute({List<_i13.PageRouteInfo>? children})
       : super(
           CategoriesRoute.name,
           initialChildren: children,
@@ -102,7 +107,7 @@ class CategoriesRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'CategoriesRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i4.Categories();
@@ -112,8 +117,8 @@ class CategoriesRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.General]
-class GeneralRoute extends _i12.PageRouteInfo<void> {
-  const GeneralRoute({List<_i12.PageRouteInfo>? children})
+class GeneralRoute extends _i13.PageRouteInfo<void> {
+  const GeneralRoute({List<_i13.PageRouteInfo>? children})
       : super(
           GeneralRoute.name,
           initialChildren: children,
@@ -121,7 +126,7 @@ class GeneralRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'GeneralRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i5.General();
@@ -131,8 +136,8 @@ class GeneralRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.Home]
-class HomeRoute extends _i12.PageRouteInfo<void> {
-  const HomeRoute({List<_i12.PageRouteInfo>? children})
+class HomeRoute extends _i13.PageRouteInfo<void> {
+  const HomeRoute({List<_i13.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -140,7 +145,7 @@ class HomeRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i6.Home();
@@ -150,11 +155,11 @@ class HomeRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.HomeDetails]
-class HomeDetailsRoute extends _i12.PageRouteInfo<HomeDetailsRouteArgs> {
+class HomeDetailsRoute extends _i13.PageRouteInfo<HomeDetailsRouteArgs> {
   HomeDetailsRoute({
-    required _i13.Post post,
+    required _i14.Post post,
     required String imagePathUrl,
-    List<_i12.PageRouteInfo>? children,
+    List<_i13.PageRouteInfo>? children,
   }) : super(
           HomeDetailsRoute.name,
           args: HomeDetailsRouteArgs(
@@ -166,7 +171,7 @@ class HomeDetailsRoute extends _i12.PageRouteInfo<HomeDetailsRouteArgs> {
 
   static const String name = 'HomeDetailsRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<HomeDetailsRouteArgs>();
@@ -184,7 +189,7 @@ class HomeDetailsRouteArgs {
     required this.imagePathUrl,
   });
 
-  final _i13.Post post;
+  final _i14.Post post;
 
   final String imagePathUrl;
 
@@ -196,8 +201,8 @@ class HomeDetailsRouteArgs {
 
 /// generated route for
 /// [_i7.Login]
-class LoginRoute extends _i12.PageRouteInfo<void> {
-  const LoginRoute({List<_i12.PageRouteInfo>? children})
+class LoginRoute extends _i13.PageRouteInfo<void> {
+  const LoginRoute({List<_i13.PageRouteInfo>? children})
       : super(
           LoginRoute.name,
           initialChildren: children,
@@ -205,7 +210,7 @@ class LoginRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i7.Login();
@@ -215,8 +220,8 @@ class LoginRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.Onboard]
-class OnboardRoute extends _i12.PageRouteInfo<void> {
-  const OnboardRoute({List<_i12.PageRouteInfo>? children})
+class OnboardRoute extends _i13.PageRouteInfo<void> {
+  const OnboardRoute({List<_i13.PageRouteInfo>? children})
       : super(
           OnboardRoute.name,
           initialChildren: children,
@@ -224,7 +229,7 @@ class OnboardRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'OnboardRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i8.Onboard();
@@ -234,8 +239,8 @@ class OnboardRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.Register]
-class RegisterRoute extends _i12.PageRouteInfo<void> {
-  const RegisterRoute({List<_i12.PageRouteInfo>? children})
+class RegisterRoute extends _i13.PageRouteInfo<void> {
+  const RegisterRoute({List<_i13.PageRouteInfo>? children})
       : super(
           RegisterRoute.name,
           initialChildren: children,
@@ -243,7 +248,7 @@ class RegisterRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'RegisterRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i9.Register();
@@ -253,8 +258,8 @@ class RegisterRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.Splash]
-class SplashRoute extends _i12.PageRouteInfo<void> {
-  const SplashRoute({List<_i12.PageRouteInfo>? children})
+class SplashRoute extends _i13.PageRouteInfo<void> {
+  const SplashRoute({List<_i13.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -262,7 +267,7 @@ class SplashRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i10.Splash();
@@ -272,8 +277,8 @@ class SplashRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.Tags]
-class TagsRoute extends _i12.PageRouteInfo<void> {
-  const TagsRoute({List<_i12.PageRouteInfo>? children})
+class TagsRoute extends _i13.PageRouteInfo<void> {
+  const TagsRoute({List<_i13.PageRouteInfo>? children})
       : super(
           TagsRoute.name,
           initialChildren: children,
@@ -281,10 +286,56 @@ class TagsRoute extends _i12.PageRouteInfo<void> {
 
   static const String name = 'TagsRoute';
 
-  static _i12.PageInfo page = _i12.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       return const _i11.Tags();
     },
   );
+}
+
+/// generated route for
+/// [_i12.UpdateTags]
+class UpdateTagsRoute extends _i13.PageRouteInfo<UpdateTagsRouteArgs> {
+  UpdateTagsRoute({
+    _i15.Key? key,
+    required _i16.Tag tag,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
+          UpdateTagsRoute.name,
+          args: UpdateTagsRouteArgs(
+            key: key,
+            tag: tag,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'UpdateTagsRoute';
+
+  static _i13.PageInfo page = _i13.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<UpdateTagsRouteArgs>();
+      return _i12.UpdateTags(
+        key: args.key,
+        tag: args.tag,
+      );
+    },
+  );
+}
+
+class UpdateTagsRouteArgs {
+  const UpdateTagsRouteArgs({
+    this.key,
+    required this.tag,
+  });
+
+  final _i15.Key? key;
+
+  final _i16.Tag tag;
+
+  @override
+  String toString() {
+    return 'UpdateTagsRouteArgs{key: $key, tag: $tag}';
+  }
 }
