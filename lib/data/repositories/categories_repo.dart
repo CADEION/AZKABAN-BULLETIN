@@ -41,4 +41,22 @@ class CategoriesRepo extends ApiClient {
     }
     return MessageModel();
   }
+
+  Future<MessageModel> updateCategories(String id,String title,String slug) async {
+    Map body = {"id": id,"title": title, "slug": slug};
+    try {
+      var response =
+          await ApiClient().postRequest(path: ApiEndpoint.updateCategories,body: body,isTokenRequired: true);
+      if (response.statusCode == 200) {
+        final responseData = MessageModel.fromJson(response.data);
+        return responseData;
+      } else {
+        MessageModel();
+      }
+    } on Exception catch (e) {
+      Vx.log(e);
+      MessageModel();
+    }
+    return MessageModel();
+  }
 }

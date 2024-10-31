@@ -29,7 +29,7 @@ class _CategoriesState extends State<Categories> {
         actions: [
           IconButton(
               onPressed: () {
-                AutoRouter.of(context).push(AddCategoriesRoute());
+                categoriesViewModel.goToAddCategories(context);
               },
               icon: Icon(
                 FeatherIcons.plus,
@@ -59,7 +59,9 @@ class _CategoriesState extends State<Categories> {
                       child: Row(
                         children: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                categoriesViewModel.goToUpdateCategories(context, categoriesData);
+                              },
                               icon: const Icon(
                                 FeatherIcons.edit,
                                 color: Colors.teal,
