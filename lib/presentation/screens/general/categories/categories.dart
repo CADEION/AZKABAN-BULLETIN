@@ -26,6 +26,16 @@ class _CategoriesState extends State<Categories> {
         automaticallyImplyLeading: false,
         title: 'Categories'.text.size(24.sp).white.make().centered(),
         backgroundColor: MyColors.primaryColor,
+        actions: [
+          IconButton(
+              onPressed: () {
+                AutoRouter.of(context).push(AddCategoriesRoute());
+              },
+              icon: Icon(
+                FeatherIcons.plus,
+                color: Colors.white,
+              ))
+        ],
       ),
       body: BlocBuilder<VelocityBloc<CategoriesModel>,
           VelocityState<CategoriesModel>>(
