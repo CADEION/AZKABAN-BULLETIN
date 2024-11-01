@@ -104,7 +104,7 @@ class _AddPostsState extends State<AddPosts> {
           20.h.heightBox,
           InkWell(
             onTap: () async {
-              var data = await AutoRouter.of(context).push<Tag>(TagsRoute());
+              var data = await AutoRouter.of(context).push<Tag>(TagsRoute(navigateType: NavigateType.inner));
               print(data);
               addPostsViewModel.selectedTagBloc.onUpdateData(data);
             },
@@ -133,7 +133,7 @@ class _AddPostsState extends State<AddPosts> {
           InkWell(
             onTap: () async {
               var data = await AutoRouter.of(context)
-                  .push<Category>(CategoriesRoute());
+                  .push<Category>(CategoriesRoute(navigateType: NavigateType.inner));
               print(data);
               addPostsViewModel.selectedCategoryBloc.onUpdateData(data);
             },

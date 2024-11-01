@@ -2,7 +2,9 @@ part of 'tags_imports.dart';
 
 @RoutePage()
 class Tags extends StatefulWidget {
-  const Tags({super.key});
+  const Tags({super.key, required this.navigateType});
+
+  final NavigateType navigateType;
 
   @override
   State<Tags> createState() => _TagsState();
@@ -22,7 +24,9 @@ class _TagsState extends State<Tags> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: NavigateType.outer == widget.navigateType
+                          ? false
+                          : true,
         title: 'Tags'.text.size(24.sp).white.make().centered(),
         backgroundColor: MyColors.primaryColor,
         actions: [
@@ -50,8 +54,10 @@ class _TagsState extends State<Tags> {
                   var tagData = state.data.tags![index];
                   return Card(
                     child: ListTile(
-                      onTap: (){
-                        AutoRouter.of(context).maybePop<Tag>(tagData);
+                      onTap: () {
+                        NavigateType.outer == widget.navigateType
+                            ? null
+                            : AutoRouter.of(context).maybePop<Tag>(tagData);
                       },
                       leading: '${index + 1}'.text.size(16.sp).make(),
                       title: tagData.title!.text.size(16.sp).make(),

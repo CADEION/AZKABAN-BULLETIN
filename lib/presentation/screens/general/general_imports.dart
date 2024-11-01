@@ -6,6 +6,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:i18n_extension/i18n_extension.dart';
 
 import '../../../core/constants/my_colors.dart';
+import '../../enums/navigate_type.dart';
 import 'add_posts/add_posts_imports.dart';
 import 'categories/categories_imports.dart';
 import 'home/home_imports.dart';

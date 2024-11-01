@@ -36,9 +36,9 @@ class _GeneralState extends State<General> {
 
   List<Widget> pages = [
     Home(),
-    Categories(),
+    Categories(navigateType: NavigateType.outer),
     AddPosts(),
-    Tags(),
+    Tags(navigateType: NavigateType.outer,),
     Profile(),
   ];
 

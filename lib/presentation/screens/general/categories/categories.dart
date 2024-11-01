@@ -2,7 +2,8 @@ part of 'categories_imports.dart';
 
 @RoutePage()
 class Categories extends StatefulWidget {
-  const Categories({super.key});
+  const Categories({super.key, required this.navigateType});
+  final NavigateType navigateType;
 
   @override
   State<Categories> createState() => _CategoriesState();
@@ -23,7 +24,9 @@ class _CategoriesState extends State<Categories> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: NavigateType.outer == widget.navigateType
+                          ? false
+                          : true,
         title: 'Categories'.text.size(24.sp).white.make().centered(),
         backgroundColor: MyColors.primaryColor,
         actions: [
@@ -52,8 +55,11 @@ class _CategoriesState extends State<Categories> {
                 var categoriesData = state.data.categories![index];
                 return Card(
                   child: ListTile(
-                    onTap: (){
-                      AutoRouter.of(context).maybePop<Category>(categoriesData);
+                    onTap: () {
+                      NavigateType.outer == widget.navigateType
+                          ? null
+                          : AutoRouter.of(context)
+                              .maybePop<Category>(categoriesData);
                     },
                     leading: '${index + 1}'.text.size(16.sp).make(),
                     title: categoriesData.title!.text.size(16.sp).make(),
@@ -63,7 +69,8 @@ class _CategoriesState extends State<Categories> {
                         children: [
                           IconButton(
                               onPressed: () {
-                                categoriesViewModel.goToUpdateCategories(context, categoriesData);
+                                categoriesViewModel.goToUpdateCategories(
+                                    context, categoriesData);
                               },
                               icon: const Icon(
                                 FeatherIcons.edit,
@@ -71,7 +78,8 @@ class _CategoriesState extends State<Categories> {
                               )),
                           IconButton(
                               onPressed: () {
-                                categoriesViewModel.deleteCategories(context, categoriesData.id.toString(), index);
+                                categoriesViewModel.deleteCategories(context,
+                                    categoriesData.id.toString(), index);
                               },
                               icon: const Icon(FeatherIcons.trash2,
                                   color: Colors.red)),

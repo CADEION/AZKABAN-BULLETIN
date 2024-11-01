@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i15;
+import 'package:azkaban_bulletin/presentation/enums/navigate_type.dart' as _i17;
 import 'package:azkaban_bulletin/presentation/screens/auth/auth_imports.dart'
     as _i4;
 import 'package:azkaban_bulletin/presentation/screens/auth/login/login_imports.dart'
@@ -22,7 +23,7 @@ import 'package:azkaban_bulletin/presentation/screens/general/categories/add_cat
 import 'package:azkaban_bulletin/presentation/screens/general/categories/categories_imports.dart'
     as _i5;
 import 'package:azkaban_bulletin/presentation/screens/general/categories/categories_model.dart'
-    as _i18;
+    as _i19;
 import 'package:azkaban_bulletin/presentation/screens/general/categories/update_categories/update_categories_imports.dart'
     as _i13;
 import 'package:azkaban_bulletin/presentation/screens/general/general_imports.dart'
@@ -30,20 +31,20 @@ import 'package:azkaban_bulletin/presentation/screens/general/general_imports.da
 import 'package:azkaban_bulletin/presentation/screens/general/home/home_imports.dart'
     as _i7;
 import 'package:azkaban_bulletin/presentation/screens/general/home/home_model.dart'
-    as _i16;
+    as _i18;
 import 'package:azkaban_bulletin/presentation/screens/general/tags/add_tags/add_tags_imports.dart'
     as _i3;
 import 'package:azkaban_bulletin/presentation/screens/general/tags/tags_imports.dart'
     as _i12;
 import 'package:azkaban_bulletin/presentation/screens/general/tags/tags_model.dart'
-    as _i19;
+    as _i20;
 import 'package:azkaban_bulletin/presentation/screens/general/tags/update_tags/update_tags_imports.dart'
     as _i14;
 import 'package:azkaban_bulletin/presentation/screens/Onboard/onboard_import.dart'
     as _i9;
 import 'package:azkaban_bulletin/presentation/screens/splash/splash_import.dart'
     as _i11;
-import 'package:flutter/material.dart' as _i17;
+import 'package:flutter/material.dart' as _i16;
 
 /// generated route for
 /// [_i1.AddCategories]
@@ -123,10 +124,17 @@ class AuthRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.Categories]
-class CategoriesRoute extends _i15.PageRouteInfo<void> {
-  const CategoriesRoute({List<_i15.PageRouteInfo>? children})
-      : super(
+class CategoriesRoute extends _i15.PageRouteInfo<CategoriesRouteArgs> {
+  CategoriesRoute({
+    _i16.Key? key,
+    required _i17.NavigateType navigateType,
+    List<_i15.PageRouteInfo>? children,
+  }) : super(
           CategoriesRoute.name,
+          args: CategoriesRouteArgs(
+            key: key,
+            navigateType: navigateType,
+          ),
           initialChildren: children,
         );
 
@@ -135,9 +143,29 @@ class CategoriesRoute extends _i15.PageRouteInfo<void> {
   static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
-      return const _i5.Categories();
+      final args = data.argsAs<CategoriesRouteArgs>();
+      return _i5.Categories(
+        key: args.key,
+        navigateType: args.navigateType,
+      );
     },
   );
+}
+
+class CategoriesRouteArgs {
+  const CategoriesRouteArgs({
+    this.key,
+    required this.navigateType,
+  });
+
+  final _i16.Key? key;
+
+  final _i17.NavigateType navigateType;
+
+  @override
+  String toString() {
+    return 'CategoriesRouteArgs{key: $key, navigateType: $navigateType}';
+  }
 }
 
 /// generated route for
@@ -182,7 +210,7 @@ class HomeRoute extends _i15.PageRouteInfo<void> {
 /// [_i7.HomeDetails]
 class HomeDetailsRoute extends _i15.PageRouteInfo<HomeDetailsRouteArgs> {
   HomeDetailsRoute({
-    required _i16.Post post,
+    required _i18.Post post,
     required String imagePathUrl,
     List<_i15.PageRouteInfo>? children,
   }) : super(
@@ -214,7 +242,7 @@ class HomeDetailsRouteArgs {
     required this.imagePathUrl,
   });
 
-  final _i16.Post post;
+  final _i18.Post post;
 
   final String imagePathUrl;
 
@@ -302,10 +330,17 @@ class SplashRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.Tags]
-class TagsRoute extends _i15.PageRouteInfo<void> {
-  const TagsRoute({List<_i15.PageRouteInfo>? children})
-      : super(
+class TagsRoute extends _i15.PageRouteInfo<TagsRouteArgs> {
+  TagsRoute({
+    _i16.Key? key,
+    required _i17.NavigateType navigateType,
+    List<_i15.PageRouteInfo>? children,
+  }) : super(
           TagsRoute.name,
+          args: TagsRouteArgs(
+            key: key,
+            navigateType: navigateType,
+          ),
           initialChildren: children,
         );
 
@@ -314,9 +349,29 @@ class TagsRoute extends _i15.PageRouteInfo<void> {
   static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
-      return const _i12.Tags();
+      final args = data.argsAs<TagsRouteArgs>();
+      return _i12.Tags(
+        key: args.key,
+        navigateType: args.navigateType,
+      );
     },
   );
+}
+
+class TagsRouteArgs {
+  const TagsRouteArgs({
+    this.key,
+    required this.navigateType,
+  });
+
+  final _i16.Key? key;
+
+  final _i17.NavigateType navigateType;
+
+  @override
+  String toString() {
+    return 'TagsRouteArgs{key: $key, navigateType: $navigateType}';
+  }
 }
 
 /// generated route for
@@ -324,8 +379,8 @@ class TagsRoute extends _i15.PageRouteInfo<void> {
 class UpdateCategoriesRoute
     extends _i15.PageRouteInfo<UpdateCategoriesRouteArgs> {
   UpdateCategoriesRoute({
-    _i17.Key? key,
-    required _i18.Category category,
+    _i16.Key? key,
+    required _i19.Category category,
     List<_i15.PageRouteInfo>? children,
   }) : super(
           UpdateCategoriesRoute.name,
@@ -356,9 +411,9 @@ class UpdateCategoriesRouteArgs {
     required this.category,
   });
 
-  final _i17.Key? key;
+  final _i16.Key? key;
 
-  final _i18.Category category;
+  final _i19.Category category;
 
   @override
   String toString() {
@@ -370,8 +425,8 @@ class UpdateCategoriesRouteArgs {
 /// [_i14.UpdateTags]
 class UpdateTagsRoute extends _i15.PageRouteInfo<UpdateTagsRouteArgs> {
   UpdateTagsRoute({
-    _i17.Key? key,
-    required _i19.Tag tag,
+    _i16.Key? key,
+    required _i20.Tag tag,
     List<_i15.PageRouteInfo>? children,
   }) : super(
           UpdateTagsRoute.name,
@@ -402,9 +457,9 @@ class UpdateTagsRouteArgs {
     required this.tag,
   });
 
-  final _i17.Key? key;
+  final _i16.Key? key;
 
-  final _i19.Tag tag;
+  final _i20.Tag tag;
 
   @override
   String toString() {

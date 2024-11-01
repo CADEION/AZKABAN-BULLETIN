@@ -16,6 +16,7 @@ import 'package:velocity_bloc/cubit/velocity_cubit/velocity_cubit.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../../../data/repositories/repositories.dart';
+import '../../../enums/navigate_type.dart';
 import '../tags/tags_model.dart';
 
 part 'add_posts.dart';
