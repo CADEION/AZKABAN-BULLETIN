@@ -26,12 +26,21 @@ class _AddPostsState extends State<AddPosts> {
         backgroundColor: MyColors.primaryColor,
         title: 'Add Posts'.text.white.center.make().centered(),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                FeatherIcons.check,
-                color: Colors.white,
-              ))
+          BlocBuilder<VelocityBloc<bool>, VelocityState<bool>>(
+            bloc: addPostsViewModel.isLoadingBloc,
+            builder: (context, state) {
+              return IconButton(
+                  onPressed: () {
+                    addPostsViewModel.addPosts(context);
+                  },
+                  icon: state.data == true
+                      ? CircularProgressIndicator.adaptive()
+                      : Icon(
+                          FeatherIcons.check,
+                          color: Colors.white,
+                        ));
+            },
+          )
         ],
       ),
       body: ListView(
@@ -44,10 +53,16 @@ class _AddPostsState extends State<AddPosts> {
               return Stack(
                 alignment: Alignment.bottomRight,
                 children: [
-                  
-                  state.data != null ? Image.file(File(state.data!.path),fit: BoxFit.fill,width: 1.sw,height: 250,).cornerRadius(12) : Image.network(
-                    'https://plus.unsplash.com/premium_photo-1666739389067-ff71ad748f3e?q=80&w=1903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                  ).cornerRadius(12),
+                  state.data != null
+                      ? Image.file(
+                          File(state.data!.path),
+                          fit: BoxFit.cover,
+                          width: 1.sw,
+                          height: 250,
+                        ).cornerRadius(12)
+                      : Image.network(
+                          'https://plus.unsplash.com/premium_photo-1666739389067-ff71ad748f3e?q=80&w=1903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                        ).cornerRadius(12),
                   IconButton(
                     onPressed: () {
                       addPostsViewModel.pickImage();
@@ -81,37 +96,60 @@ class _AddPostsState extends State<AddPosts> {
           ),
           20.h.heightBox,
           InkWell(
-            onTap: () {
-              // var data = AutoRouter.of(context).push<Tag>(TagsRoute());
-              // print('fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');
-              // print(data);
+            onTap: () async {
+              var data = await AutoRouter.of(context).push<Tag>(TagsRoute());
+              print(data);
+              addPostsViewModel.selectedTagBloc.onUpdateData(data);
             },
             child: Container(
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12))),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  'Tags'.text.xl.make(),
-                  Icon(FeatherIcons.chevronRight)
-                ],
+              child: BlocBuilder<VelocityBloc<Tag?>, VelocityState<Tag?>>(
+                bloc: addPostsViewModel.selectedTagBloc,
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      state.data != null
+                          ? state.data!.title!.text.xl.make()
+                          : 'Tags'.text.xl.make(),
+                      Icon(FeatherIcons.chevronRight)
+                    ],
+                  );
+                },
               ),
             ),
           ),
           20.h.heightBox,
-          Container(
-            padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(12))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                'Categories'.text.xl.make(),
-                Icon(FeatherIcons.chevronRight)
-              ],
+          InkWell(
+            onTap: () async {
+              var data = await AutoRouter.of(context)
+                  .push<Category>(CategoriesRoute());
+              print(data);
+              addPostsViewModel.selectedCategoryBloc.onUpdateData(data);
+            },
+            child: Container(
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(12))),
+              child: BlocBuilder<VelocityBloc<Category?>,
+                  VelocityState<Category?>>(
+                bloc: addPostsViewModel.selectedCategoryBloc,
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      state.data != null
+                          ? state.data!.title!.text.xl.make()
+                          : 'Categories'.text.xl.make(),
+                      Icon(FeatherIcons.chevronRight)
+                    ],
+                  );
+                },
+              ),
             ),
           ),
           10.h.heightBox,

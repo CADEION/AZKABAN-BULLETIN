@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:azkaban_bulletin/data/models/message_model.dart';
 import 'package:azkaban_bulletin/presentation/screens/general/home/home_model.dart';
+import 'package:dio/dio.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../presentation/screens/general/profile/profile_model.dart';
@@ -26,10 +28,11 @@ class PostsRepo extends ApiClient {
       return HomeModel();
     }
   }
-    Future<ProfileModel> getUserPosts() async {
+
+  Future<ProfileModel> getUserPosts() async {
     try {
-      final response = await getRequest(
-          path: ApiEndpoint.userPosts, isTokenRequired: true);
+      final response =
+          await getRequest(path: ApiEndpoint.userPosts, isTokenRequired: true);
       if (response.statusCode == 200) {
         final responseData = profileModelFromJson(jsonEncode(response.data));
         return responseData;
@@ -41,5 +44,35 @@ class PostsRepo extends ApiClient {
       ProfileModel();
     }
     return ProfileModel();
+  }
+
+  Future<MessageModel> addPosts(String title,String slug,String categories,String tags,String body,String userId,String filepath,String filename) async {
+    final formData = FormData.fromMap({
+      'title': title,
+      'slug': slug,
+      'categories': categories,
+      'tags': tags,
+      'body': body,
+      'status': '1',
+      'user_id': userId,
+      'featuredimage':
+          await MultipartFile.fromFile(filepath, filename: filename),
+    });
+    
+
+    try {
+      final response = await postRequest(
+          path: ApiEndpoint.addPosts, isTokenRequired: true, body: formData);
+      if (response.statusCode == 200) {
+        final responseData = messageModelFromJson(jsonEncode(response.data));
+        return responseData;
+      } else {
+        MessageModel();
+      }
+    } on Exception catch (e) {
+      Vx.log(e);
+      MessageModel();
+    }
+    return MessageModel();
   }
 }

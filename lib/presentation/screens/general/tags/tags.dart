@@ -51,7 +51,7 @@ class _TagsState extends State<Tags> {
                   return Card(
                     child: ListTile(
                       onTap: (){
-                        // AutoRouter.of(context).maybePop<Tag>(tagData);
+                        AutoRouter.of(context).maybePop<Tag>(tagData);
                       },
                       leading: '${index + 1}'.text.size(16.sp).make(),
                       title: tagData.title!.text.size(16.sp).make(),

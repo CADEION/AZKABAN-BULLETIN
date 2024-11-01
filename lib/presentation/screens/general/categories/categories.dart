@@ -52,6 +52,9 @@ class _CategoriesState extends State<Categories> {
                 var categoriesData = state.data.categories![index];
                 return Card(
                   child: ListTile(
+                    onTap: (){
+                      AutoRouter.of(context).maybePop<Category>(categoriesData);
+                    },
                     leading: '${index + 1}'.text.size(16.sp).make(),
                     title: categoriesData.title!.text.size(16.sp).make(),
                     trailing: SizedBox(
