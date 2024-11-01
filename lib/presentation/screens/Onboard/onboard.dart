@@ -1,8 +1,21 @@
 part of 'onboard_import.dart';
 
 @RoutePage()
-class Onboard extends StatelessWidget {
+class Onboard extends StatefulWidget {
   const Onboard({super.key});
+
+  @override
+  State<Onboard> createState() => _OnboardState();
+}
+
+class _OnboardState extends State<Onboard> {
+  OnBoardViewModel onBoardViewModel = OnBoardViewModel();
+
+  @override
+  void dispose() {
+    onBoardViewModel.pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

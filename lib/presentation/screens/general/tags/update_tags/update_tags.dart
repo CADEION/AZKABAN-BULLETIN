@@ -22,6 +22,12 @@ class _UpdateTagsState extends State<UpdateTags> {
   }
 
   @override
+  void dispose() {
+    updateTagsViewModel.controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +66,7 @@ class _UpdateTagsState extends State<UpdateTags> {
             ),
             const Spacer(),
             BlocBuilder<VelocityBloc<bool>, VelocityState<bool>>(
-              bloc: updateTagsViewModel.isLoadingBloc ,
+              bloc: updateTagsViewModel.isLoadingBloc,
               builder: (context, state) {
                 return PrimaryButton(
                     title: "Add New Tags",

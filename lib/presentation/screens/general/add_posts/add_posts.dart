@@ -19,6 +19,13 @@ class _AddPostsState extends State<AddPosts> {
   }
 
   @override
+  void dispose() {
+    addPostsViewModel._controller.dispose();
+    addPostsViewModel.textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

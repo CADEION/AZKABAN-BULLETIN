@@ -11,15 +11,21 @@ class UpdateCategories extends StatefulWidget {
 }
 
 class _UpdateCategoriesState extends State<UpdateCategories> {
-
   late UpdateCategoriesViewModel updateCategoriesViewModel;
 
   @override
   void initState() {
     updateCategoriesViewModel =
         UpdateCategoriesViewModel(repositories: context.read<Repositories>());
-        updateCategoriesViewModel.controller.text = widget.category.title.toString();
+    updateCategoriesViewModel.controller.text =
+        widget.category.title.toString();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    updateCategoriesViewModel.controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -73,7 +79,8 @@ class _UpdateCategoriesState extends State<UpdateCategories> {
                     title: "Add New Categories",
                     isLoading: state.data,
                     onPressed: () {
-                      updateCategoriesViewModel.updateCategories(context,widget.category.id.toString());
+                      updateCategoriesViewModel.updateCategories(
+                          context, widget.category.id.toString());
                     });
               },
             )
