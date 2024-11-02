@@ -29,7 +29,8 @@ class AddPostsViewModel {
     selectedTagBloc.onUpdateData(null);
   }
 
-  addPosts(BuildContext context) async {
+  addPosts(BuildContext context,String userId) async {
+
     if (selectedImageBloc.state.data == null) {
       VxToast.show(context, msg: "Please select an image.");
       return;
@@ -45,13 +46,14 @@ class AddPostsViewModel {
     try {
       isLoadingBloc.onUpdateData(true);
       // Call the addPosts function with the necessary data
+      // var userId= context.read<VelocityBloc<ProfileModel>>().state.data.userDetails!.id.toString();
       var data = await repositories.postsRepo.addPosts(
         textEditingController.text,
         textEditingController.text.toLowerCase().replaceAll(' ', '-'),
         selectedCategoryBloc.state.data!.id.toString(),
         selectedTagBloc.state.data!.id.toString(),
         _controller.document.toPlainText(),
-        '69',
+        userId,
         selectedImageBloc.state.data!.path,
         selectedImageBloc.state.data!.name,
       );

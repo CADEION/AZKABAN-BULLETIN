@@ -6,9 +6,9 @@ class Utils {
   static Future<void> manipulateLogin(context) async {
     var token = await getAccessToken();
     if (token != null) {
-      AutoRouter.of(context).push(const GeneralRoute());
+      AutoRouter.of(context).replace(const GeneralRoute());
     } else {
-      AutoRouter.of(context).push(const OnboardRoute());
+      AutoRouter.of(context).replace(const OnboardRoute());
     }
   }
 

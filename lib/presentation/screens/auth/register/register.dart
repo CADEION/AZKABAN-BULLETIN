@@ -108,7 +108,7 @@ class _RegisterState extends State<Register> {
                           .withTextSpanChildren([
                         TextSpan(
                             text: " Login",
-                            recognizer: TapGestureRecognizer()..onTap=()=>AutoRouter.of(context).push(LoginRoute()),
+                            recognizer: TapGestureRecognizer()..onTap=()=>AutoRouter.of(context).replace(LoginRoute()),
                             style:
                                 const TextStyle(fontWeight: FontWeight.w700)),
                       ]).makeCentered(),

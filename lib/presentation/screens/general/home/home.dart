@@ -30,122 +30,153 @@ class _HomeState extends State<Home> {
                 child: CircularProgressIndicator.adaptive(),
               );
             } else if (state is VelocityUpdateState) {
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    10.h.heightBox,
-                    VxSwiper.builder(
-                      autoPlay: true,
-                      enlargeCenterPage: true,
-                      itemCount: state.data.popularPosts!.length,
-                      itemBuilder: ((context, index) {
-                        var latestPosts = state.data.popularPosts![index];
-                        var imagePath = latestPosts.featuredimage.toString();
-                        return CachedNetworkImage(
-                          imageUrl: imagePath,
-                          fit: BoxFit.cover,
-                        ).cornerRadius(20).pSymmetric(h: 10);
-                      }),
-                    ),
-                    20.h.heightBox,
-
-                    // Latest Posts Section
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          "Latest Posts".text.size(16).make(),
-                          "See All".text.size(16).make(),
-                        ],
-                      ).pSymmetric(h: 24.w),
-                    ),
-                    14.h.heightBox,
-
-                    // Posts List
-                    FadedScaleAnimation(
-                      child: ListView.separated(
-                        padding: EdgeInsets.symmetric(horizontal: 24.h),
-                        shrinkWrap: true,
-                        itemCount: state.data.allPosts!.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        separatorBuilder: (context, index) =>
-                            SizedBox(height: 20.h),
-                        itemBuilder: (context, index) {
-                          var latestPosts = state.data.allPosts![index];
-                          var imagePath = latestPosts.featuredimage.toString();
-                          // String timeAgo = convertToAgo(latestPosts.createdAt);
-                          return Row(
-                            children: [
-                              // Image
-                              GestureDetector(
-                                onTap: () {
-                                  AutoRouter.of(context).push(HomeDetailsRoute(
-                                      post: latestPosts,
-                                      imagePathUrl: imagePath));
-                                },
-                                child: CachedNetworkImage(
-                                  imageUrl: imagePath,
-                                  height: 120,
-                                  width: 180,
-                                  fit: BoxFit.cover,
-                                )
-                                    .cornerRadius(20)
-                                    .cornerRadius(20)
-                                    .h(140.h)
-                                    .w(180.w),
-                              ),
-                              10.w.widthBox,
-                              // Text and Meta Info
-                              Flexible(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Post Title
-                                    '${latestPosts.title!}'
-                                        .text
-                                        .size(16)
-                                        .bold
-                                        .maxLines(3)
-                                        .overflow(TextOverflow.ellipsis)
-                                        .make(),
-                                    6.h.heightBox,
-
-                                    // Post Meta (Time)
-                                    Row(
-                                      children: [
-                                        const Icon(FeatherIcons.clock),
-                                        8.horizontalSpace,
-                                        'timeAgo'
-                                            .text
-                                            .size(14)
-                                            .make(),
-                                      ],
-                                    ),
-                                    6.h.heightBox,
-
-                                    // Post Meta (Views and Bookmark)
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        latestPosts.views
-                                            .toString()
-                                            .text
-                                            .size(16)
-                                            .make(),
-                                        const Icon(FeatherIcons.bookmark),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          );
-                        },
+              return RefreshIndicator(
+                onRefresh: () {
+                  return homeViewModel.fetchAllPosts();
+                },
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      10.h.heightBox,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            'Hi ${context.read<VelocityBloc<ProfileModel>>().state.data.userDetails!.name}'
+                                .text
+                                .xl
+                                // .color(MyColors.primaryColor)
+                                .fontWeight(FontWeight.bold)
+                                .make(),
+                            CachedNetworkImage(
+                              imageUrl: context
+                                  .read<VelocityBloc<ProfileModel>>()
+                                  .state
+                                  .data
+                                  .userDetails!
+                                  .profilePhotoUrl
+                                  .toString(),
+                              height: 40,
+                              width: 40,
+                            ).cornerRadius(50)
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      10.h.heightBox,
+                      VxSwiper.builder(
+                        autoPlay: true,
+                        enlargeCenterPage: true,
+                        itemCount: state.data.popularPosts!.length,
+                        itemBuilder: ((context, index) {
+                          var latestPosts = state.data.popularPosts![index];
+                          var imagePath = latestPosts.featuredimage.toString();
+                          return CachedNetworkImage(
+                            imageUrl: imagePath,
+                            fit: BoxFit.cover,
+                          ).cornerRadius(20).pSymmetric(h: 10);
+                        }),
+                      ),
+                      20.h.heightBox,
+
+                      // Latest Posts Section
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            "Latest Posts".text.size(16).make(),
+                            "See All".text.size(16).make(),
+                          ],
+                        ).pSymmetric(h: 24.w),
+                      ),
+                      14.h.heightBox,
+
+                      // Posts List
+                      FadedScaleAnimation(
+                        child: ListView.separated(
+                          padding: EdgeInsets.symmetric(horizontal: 24.h),
+                          shrinkWrap: true,
+                          itemCount: state.data.allPosts!.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          separatorBuilder: (context, index) =>
+                              SizedBox(height: 20.h),
+                          itemBuilder: (context, index) {
+                            var latestPosts = state.data.allPosts![index];
+                            var imagePath =
+                                latestPosts.featuredimage.toString();
+                            // String timeAgo = convertToAgo(latestPosts.createdAt);
+                            return Row(
+                              children: [
+                                // Image
+                                GestureDetector(
+                                  onTap: () {
+                                    AutoRouter.of(context).push(
+                                        HomeDetailsRoute(
+                                            post: latestPosts,
+                                            imagePathUrl: imagePath));
+                                  },
+                                  child: CachedNetworkImage(
+                                    imageUrl: imagePath,
+                                    height: 120,
+                                    width: 180,
+                                    fit: BoxFit.cover,
+                                  )
+                                      .cornerRadius(20)
+                                      .cornerRadius(20)
+                                      .h(140.h)
+                                      .w(180.w),
+                                ),
+                                10.w.widthBox,
+                                // Text and Meta Info
+                                Flexible(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // Post Title
+                                      '${latestPosts.title!}'
+                                          .text
+                                          .size(16)
+                                          .bold
+                                          .maxLines(3)
+                                          .overflow(TextOverflow.ellipsis)
+                                          .make(),
+                                      6.h.heightBox,
+
+                                      // Post Meta (Time)
+                                      Row(
+                                        children: [
+                                          const Icon(FeatherIcons.clock),
+                                          8.horizontalSpace,
+                                          'timeAgo'.text.size(14).make(),
+                                        ],
+                                      ),
+                                      6.h.heightBox,
+
+                                      // Post Meta (Views and Bookmark)
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          latestPosts.views
+                                              .toString()
+                                              .text
+                                              .size(16)
+                                              .make(),
+                                          const Icon(FeatherIcons.bookmark),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             } else if (state is VelocityFailedState) {
@@ -158,5 +189,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
 }

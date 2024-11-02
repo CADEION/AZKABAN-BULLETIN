@@ -44,7 +44,7 @@ class _OnboardState extends State<Onboard> {
               ).expand(),
               61.h.heightBox,
               PrimaryButton(
-                title: 'Get Req',
+                title: 'Get Started',
                 onPressed: () {
                   AutoRouter.of(context).push(AuthRoute());
                 },

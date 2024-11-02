@@ -111,7 +111,7 @@ class _LoginState extends State<Login> {
                             "Forgot Password".text.size(14).make(),
                           ],
                         ),
-                        40.h.heightBox,
+                        100.h.heightBox,
                         PrimaryButton(
                             title: "Login",
                             onPressed: () {
@@ -130,7 +130,7 @@ class _LoginState extends State<Login> {
                               text: " Sign Up",
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () =>
-                                    AutoRouter.of(context).push(RegisterRoute()),
+                                    AutoRouter.of(context).replace(RegisterRoute()),
                               style:
                                   const TextStyle(fontWeight: FontWeight.w700)),
                         ]).makeCentered(),

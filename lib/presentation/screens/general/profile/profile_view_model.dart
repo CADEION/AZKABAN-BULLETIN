@@ -9,6 +9,9 @@ class ProfileViewModel {
   getUserProfileData(BuildContext context) async {
     var userProfileData = await repositories.postsRepo.getUserPosts();
     if (userProfileData.status == 1) {
+      if (context.mounted) {
+        context.read<VelocityBloc<ProfileModel>>().onUpdateData(userProfileData);
+      }
       profileModelBloc.onUpdateData(userProfileData);
     }
   }

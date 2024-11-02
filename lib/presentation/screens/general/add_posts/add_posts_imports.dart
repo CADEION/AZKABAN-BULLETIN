@@ -5,6 +5,7 @@ import 'package:azkaban_bulletin/core/constants/my_colors.dart';
 import 'package:azkaban_bulletin/data/repositories/auth_repo.dart';
 import 'package:azkaban_bulletin/presentation/routers/router_import.gr.dart';
 import 'package:azkaban_bulletin/presentation/screens/general/categories/categories_model.dart';
+import 'package:azkaban_bulletin/presentation/screens/general/profile/profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';

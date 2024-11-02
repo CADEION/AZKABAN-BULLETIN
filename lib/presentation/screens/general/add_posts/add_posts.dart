@@ -38,7 +38,7 @@ class _AddPostsState extends State<AddPosts> {
             builder: (context, state) {
               return IconButton(
                   onPressed: () {
-                    addPostsViewModel.addPosts(context);
+                    addPostsViewModel.addPosts(context,context.read<VelocityBloc<ProfileModel>>().state.data.userDetails!.id.toString());
                   },
                   icon: state.data == true
                       ? CircularProgressIndicator.adaptive()

@@ -4,6 +4,7 @@ import 'package:azkaban_bulletin/core/constants/my_assets.dart';
 import 'package:azkaban_bulletin/core/constants/my_colors.dart';
 import 'package:azkaban_bulletin/presentation/routers/router_import.gr.dart';
 import 'package:azkaban_bulletin/presentation/screens/general/home/home_model.dart';
+import 'package:azkaban_bulletin/presentation/screens/general/profile/profile_model.dart' hide Post;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';

@@ -18,6 +18,7 @@ class LoginViewModel {
     Vx.log(loginData.message);
     if (loginData.accessToken != null) {
       Utils.saveTokens(loginData.accessToken!.toString());
+      VxToast.show(context, msg: loginData.message.toString());
       AutoRouter.of(context).push(const GeneralRoute());
     }
   }
